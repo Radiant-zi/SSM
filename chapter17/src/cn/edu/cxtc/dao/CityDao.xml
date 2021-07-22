@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 对应的是接口的全限定名 -->
+<mapper namespace="cn.edu.cxtc.dao.CityDao">
+	<!--查找全部，resulttype 返回类型，parameterType传入参数名称-->
+	<select id="findAll" resultType="cn.edu.cxtc.po.City">
+		select * from city
+	</select>
+	<!-- 查找单条 --><!-- 返回的是要封装的java对象类型 -->
+  	<select id="findOne" parameterType="Integer" resultType="cn.edu.cxtc.po.City">
+   		select * from city where id = #{id}
+  	</select>
+  	<!-- 增加操作 -->
+  	<insert id="add" parameterType="cn.edu.cxtc.po.City">
+  		insert into city (id,name,countrycode,district,population) values(#{id},#{name},#{countrycode},#{district},#{population})
+  	</insert>
+  	<!-- 修改 -->
+	<update id="update" parameterType="cn.edu.cxtc.po.City">
+		update city set id=#{id},name=#{name},countrycode=#{countrycode},district=#{district},population=#{population} where id=#{id}
+	</update>
+	<!-- 删除 -->
+	<delete id="delete" parameterType="cn.edu.cxtc.po.City">
+		delete from city where id=#{id}
+	</delete>
+
+</mapper>
